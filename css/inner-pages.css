@@ -1,0 +1,120 @@
+/* ==========================================================================
+   INNER PAGES — shared page-header, breadcrumb, and misc components
+   used across Projects, Experience, Education, Competition, Contact
+   ========================================================================== */
+
+.page-header{
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: var(--sp-xl);
+  position: relative;
+}
+.page-header::before{
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  height: 40vw;
+  max-width: 800px;
+  background: var(--gradient-glow);
+  opacity: 0.22;
+  pointer-events: none;
+}
+.breadcrumb{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-md);
+}
+.breadcrumb a{ color: var(--text-muted); transition: color var(--dur-fast); }
+.breadcrumb a:hover{ color: var(--moon-blush); }
+.page-header h1{ font-size: var(--fs-4xl); max-width: 20ch; }
+.page-header .page-kicker{ margin-bottom: var(--sp-sm); }
+.page-header .page-sub{ margin-top: var(--sp-md); font-size: var(--fs-md); max-width: 60ch; color: var(--text-body); }
+
+/* ---- Generic numbered timeline (Experience / Education) ---- */
+.timeline{
+  position: relative;
+  max-width: 880px;
+  margin-top: var(--sp-lg);
+}
+.timeline::before{
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--gradient-hairline);
+}
+.timeline-item{
+  position: relative;
+  padding-left: 76px;
+  padding-bottom: var(--sp-2xl);
+}
+.timeline-item:last-child{ padding-bottom: 0; }
+.timeline-marker{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  border: 1px solid var(--hairline-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  color: var(--moon-blush);
+}
+.timeline-item.is-current .timeline-marker{
+  background: var(--gradient-accent);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-glow);
+}
+.timeline-content{
+  background: var(--bg-card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: var(--sp-lg);
+}
+.timeline-content .role{ font-size: var(--fs-xl); color: var(--text-high); font-family: var(--font-display); }
+.timeline-content .org{ color: var(--moon-blush); font-size: var(--fs-sm); margin-top: 0.2em; margin-bottom: var(--sp-sm); }
+.timeline-content .meta-row{
+  display: flex;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-sm);
+}
+.timeline-content p{ max-width: 60ch; }
+.timeline-content .skills-gained{
+  margin-top: var(--sp-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 620px){
+  .timeline::before{ left: 21px; }
+  .timeline-item{ padding-left: 58px; }
+  .timeline-marker{ width: 44px; height: 44px; font-size: var(--fs-xs); }
+}
+
+/* ---- Empty state ---- */
+.empty-state{
+  text-align: center;
+  padding: var(--sp-2xl) var(--sp-lg);
+  border: 1px dashed var(--hairline-strong);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  margin-inline: auto;
+}
+.empty-state .moon-mark{ width: 2.4em; height: 2.4em; margin-inline: auto var(--sp-md); box-shadow: inset 34% 0 0 0 var(--moon-night); }
+.empty-state h3{ font-size: var(--fs-xl); margin-bottom: var(--sp-sm); }
+.empty-state p{ color: var(--text-muted); max-width: 44ch; margin-inline: auto; }

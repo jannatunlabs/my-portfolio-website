@@ -1,0 +1,99 @@
+/* ==========================================================================
+   DESIGN TOKENS — Jannatun Ferdous Portfolio
+   Palette: "Moon" — soft lavender-pink through deep night violet.
+   Signature motif: the moon's phases, waxing from new to full,
+   used as a quiet metaphor for a learning journey.
+   ========================================================================== */
+
+:root{
+  /* -- Core palette (from the Moon palette) -- */
+  --moon-blush:   #F5D5E0;   /* palest — high-emphasis text, glow */
+  --moon-periwinkle: #6667AB; /* mid — links, secondary accent */
+  --moon-orchid:  #7B337E;   /* primary accent — buttons, highlights */
+  --moon-plum:    #420D4B;   /* deep surface */
+  --moon-night:   #210635;   /* deepest — base background */
+
+  /* -- Derived neutrals (tinted, never pure gray) -- */
+  --ink-950: #150422;
+  --ink-900: #1c0630;
+  --ink-800: #26093f;
+  --ink-700: #331050;
+  --ink-600: #421a5e;
+  --hairline: rgba(245, 213, 224, 0.14);
+  --hairline-strong: rgba(245, 213, 224, 0.26);
+
+  /* -- Text -- */
+  --text-high: #F8E6EE;      /* headings */
+  --text-body: #CBB7D6;      /* body copy, tinted lavender-gray */
+  --text-muted: #8E7C9E;     /* captions, meta */
+  --text-on-accent: #FBEFF3;
+
+  /* -- Surfaces -- */
+  --bg-base: var(--moon-night);
+  --bg-raised: var(--ink-800);
+  --bg-card: rgba(66, 26, 94, 0.35);
+  --bg-card-hover: rgba(66, 26, 94, 0.55);
+
+  /* -- Gradients -- */
+  --gradient-atmosphere: radial-gradient(120% 90% at 15% 0%, #3a1352 0%, #210635 45%, #150422 100%);
+  --gradient-accent: linear-gradient(135deg, var(--moon-periwinkle) 0%, var(--moon-orchid) 100%);
+  --gradient-glow: radial-gradient(closest-side, rgba(245,213,224,0.35), rgba(245,213,224,0));
+  --gradient-hairline: linear-gradient(90deg, transparent, var(--hairline-strong), transparent);
+
+  /* -- Typography -- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+  --fs-4xl: clamp(2.75rem, 4vw + 1.5rem, 5rem);
+  --fs-5xl: clamp(3.5rem, 6vw + 1.5rem, 7rem);
+
+  /* -- Spacing scale -- */
+  --sp-3xs: 0.25rem;
+  --sp-2xs: 0.5rem;
+  --sp-xs: 0.75rem;
+  --sp-sm: 1rem;
+  --sp-md: 1.5rem;
+  --sp-lg: 2.5rem;
+  --sp-xl: 4rem;
+  --sp-2xl: 6rem;
+  --sp-3xl: 9rem;
+
+  /* -- Layout -- */
+  --container-w: 1240px;
+  --container-pad: clamp(1.25rem, 4vw, 3rem);
+  --nav-h: 84px;
+
+  /* -- Radius -- */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* -- Motion -- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-med: 420ms;
+  --dur-slow: 800ms;
+
+  /* -- Shadow -- */
+  --shadow-card: 0 20px 60px -20px rgba(9, 2, 15, 0.65);
+  --shadow-glow: 0 0 80px -10px rgba(123, 51, 126, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

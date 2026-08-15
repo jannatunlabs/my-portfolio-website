@@ -1,0 +1,201 @@
+/* ==========================================================================
+   BASE — reset, typography, layout primitives
+   ========================================================================== */
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+}
+body{
+  margin: 0;
+  background: var(--bg-base);
+  background-image: var(--gradient-atmosphere);
+  background-attachment: fixed;
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+ul, ol{ margin: 0; padding: 0; list-style: none; }
+button{ font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+h1, h2, h3, h4, h5{
+  font-family: var(--font-display);
+  color: var(--text-high);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+p{ margin: 0; }
+svg{ display: block; }
+
+/* -- Focus visibility (accessibility) -- */
+:focus-visible{
+  outline: 2px solid var(--moon-blush);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* -- Selection -- */
+::selection{ background: var(--moon-orchid); color: var(--text-on-accent); }
+
+/* -- Skip link -- */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--moon-blush);
+  color: var(--moon-night);
+  padding: 0.75rem 1.25rem;
+  z-index: 1000;
+  border-radius: 0 0 var(--radius-sm) 0;
+  font-weight: 600;
+}
+.skip-link:focus{ left: 0; }
+
+/* -- Layout primitives -- */
+.container{
+  width: 100%;
+  max-width: var(--container-w);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+section{ position: relative; }
+.section-pad{ padding-block: var(--sp-2xl); }
+@media (max-width: 720px){
+  .section-pad{ padding-block: var(--sp-xl); }
+}
+
+.eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-body);
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moon-blush);
+  opacity: 0.85;
+  margin-bottom: var(--sp-sm);
+}
+.eyebrow::before{
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--moon-blush);
+  display: inline-block;
+}
+
+.section-head{
+  max-width: 640px;
+  margin-bottom: var(--sp-xl);
+}
+.section-head h2{ font-size: var(--fs-3xl); }
+.section-head p{ margin-top: var(--sp-sm); font-size: var(--fs-md); color: var(--text-body); }
+
+/* -- Buttons -- */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.95em 1.9em;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.btn-primary{
+  background: var(--gradient-accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 12px 30px -10px rgba(123, 51, 126, 0.7);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 40px -12px rgba(123, 51, 126, 0.85); }
+.btn-secondary{
+  background: transparent;
+  color: var(--text-high);
+  border: 1px solid var(--hairline-strong);
+}
+.btn-secondary:hover{ border-color: var(--moon-blush); background: rgba(245,213,224,0.06); transform: translateY(-2px); }
+.btn-secondary.is-disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.btn-ghost{
+  color: var(--moon-blush);
+  padding: 0.4em 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+}
+.btn-ghost:hover{ border-color: var(--moon-blush); }
+.btn-small{ padding: 0.7em 1.4em; font-size: var(--fs-xs); }
+
+/* -- Card -- */
+.card{
+  background: var(--bg-card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(6px);
+  transition: transform var(--dur-med) var(--ease-out), border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+/* -- Tag / chip -- */
+.tag{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4em 0.95em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline);
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.04em;
+  color: var(--text-body);
+  background: rgba(245,213,224,0.04);
+}
+
+/* -- Scroll reveal -- */
+[data-reveal]{
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+[data-reveal].is-visible{ opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{ opacity: 1; transform: none; }
+}
+
+/* -- Visually hidden (screen-reader only) -- */
+.sr-only{
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -- Divider -- */
+.hairline{
+  height: 1px;
+  background: var(--gradient-hairline);
+  border: none;
+  margin: 0;
+}
+
+/* -- Moon phase mark (signature decorative element) -- */
+.moon-mark{
+  --phase: 50%;
+  width: 1em; height: 1em;
+  border-radius: 50%;
+  background: var(--moon-blush);
+  box-shadow: inset var(--phase) 0 0 0 var(--moon-night);
+  flex-shrink: 0;
+}
